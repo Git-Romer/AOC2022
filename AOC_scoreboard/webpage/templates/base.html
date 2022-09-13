@@ -12,7 +12,22 @@
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/bongostyle.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+        <script>
+            // Detect wether device is a touch device -> Change navbar behaviour if True
+            function isTouchDevice() {
+                return window.ontouchstart !== undefined;
+            }
+            if (isTouchDevice) {
+                document
+                    .getElementsByTagName("head")[0]
+                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />;`);
+                // touchscreen
+            } else {
+                document
+                    .getElementsByTagName("head")[0]
+                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar_touch.css' %}" />;`);
+            }
+        </script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
         {% if request.get_full_path == '/bongocat' %}
