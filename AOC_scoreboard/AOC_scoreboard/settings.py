@@ -28,7 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "gromer.pythonanywhere.com",
-    "127.0.0.1"
+    "127.0.0.1",
+    "localhost",
+    "0.0.0.0",
+    "10.1.180.225"
 ]
 
 
