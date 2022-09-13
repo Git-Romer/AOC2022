@@ -17,15 +17,14 @@
             function isTouchDevice() {
                 return window.ontouchstart !== undefined;
             }
-            if (isTouchDevice) {
-                document
-                    .getElementsByTagName("head")[0]
-                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />;`);
-                // touchscreen
-            } else {
+            if (isTouchDevice()) {
                 document
                     .getElementsByTagName("head")[0]
                     .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar_touch.css' %}" />;`);
+            } else {
+                document
+                    .getElementsByTagName("head")[0]
+                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />;`);
             }
         </script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
