@@ -33,7 +33,7 @@ def update():
             event=event
         )
         res.save()
-    print("Updated scoreboard!")
+    # print("Updated scoreboard!")
 
 if __name__ == "__main__":
     import os, sys
