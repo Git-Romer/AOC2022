@@ -1,4 +1,4 @@
-from scoreboard.api_secrets import *
+from scoreboard_updater.api_secrets import *
 import requests
 from scoreboard.models import jsoncrawler
 
