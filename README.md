@@ -63,6 +63,10 @@ Please enter the URL to your Advent of Code Leaderboard: https://adventofcode.co
 Please enter the session cookie to your Advent of Code Leaderboard: 53616c74658e*****************************************************************************************************49ad7acf102791d
 ```
 
+## Publish website on Pythonanywhere
+
+Once your GitHub repository is ready, you can publish your website on Pythonanywhere. This step can only be done by the host of the repository.
+
 ## FAQ
 
 ### How to retrieve the session cookie?
