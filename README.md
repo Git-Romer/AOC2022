@@ -41,4 +41,35 @@ The repository includes 2 files which have to be executed for initialization by 
 
 ### [init_repo.py](init_repo.py)
 
-When executing this file, the user is asked for the names of the persons to participate. Several persons can be entered at the same time. Example:
+When executing this file, the user is asked for the names of the persons to participate. Several persons can be entered at the same time.  
+Example:
+
+```python
+$ python init_repo.py
+Please enter the participating persons comma separated: user1, user2, user3
+```
+
+### [init_django.py](init_django.py)
+
+When this file is executed, the necessary django requirements are created.  
+First, the user is asked for the URL to the AOC scoreboard.  
+Afterwards, the user is asked for the session cookie. This is necessary for django to authenticate itself on the API request to the scoreboard.  
+If you need help retrieving the session cookie you can jump to the [FAQ section](#How-to-retrieve-the-session-cookie) explaining the process.  
+Example:
+
+```python
+$ python init_django.py
+Please enter the URL to your Advent of Code Leaderboard: https://adventofcode.com/****/leaderboard/private/view/*******
+Please enter the session cookie to your Advent of Code Leaderboard: 53616c74658e*****************************************************************************************************49ad7acf102791d
+```
+
+## FAQ
+
+### How to retrieve the session cookie?
+
+1. Open the Advent of Code Website in your browser.
+2. Head to your [private Leaderboard](https://adventofcode.com/leaderboard/private), Click on `[View]`, `[API]` and then `[JSON]`.
+3. Once your webbrowser opens the JSON results, press `F12` to open the developer tools.
+4. Head to the `Network` tab and reload the page.
+5. Select the GET request with the `adventofcode.com` host and head to the `Headers` tab.
+6. Scroll down and retrieve the `Cookie` value without the `session=` part.
