@@ -12,7 +12,21 @@
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/bongostyle.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+        <script>
+            // Detect wether device is a touch device -> Change navbar behaviour if True
+            function isTouchDevice() {
+                return window.ontouchstart !== undefined;
+            }
+            if (isTouchDevice()) {
+                document
+                    .getElementsByTagName("head")[0]
+                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar_touch.css' %}" />;`);
+            } else {
+                document
+                    .getElementsByTagName("head")[0]
+                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />;`);
+            }
+        </script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
         {% if request.get_full_path == '/bongocat' %}
@@ -22,7 +36,7 @@
     </head>
     <body>
         <div id="menu">
-            <div class="hamburger">
+            <div class="hamburger" onclick="myFunction()">
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="line"></div>
@@ -41,7 +55,19 @@
                 <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z" />
             </svg>
         </div>
-        <script type="text/javascript" src="{% static 'js/navbar.js' %}"></script>
+        <script>
+            function myFunction() {
+                document.getElementById("menu").classList.toggle("expanded");
+            }
+            if (isTouchDevice()) {
+                document.getElementById("blob").style.visibility = "hidden";
+            } else {
+                var script = document.createElement("script");
+                script.src = "{% static 'js/navbar.js' %}";
+                var ref = document.querySelector("script");
+                ref.parentNode.insertBefore(script, ref);
+            }
+        </script>
         {% block content %}{% endblock content %} {% if request.get_full_path == '/bongocat' %}
         <script type="text/javascript" src="{% static 'js/bongocat.js' %}"></script>
         {% endif %}

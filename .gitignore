@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # Tokens and keys
-sso/
+api_secrets.py
+django_secrets.py

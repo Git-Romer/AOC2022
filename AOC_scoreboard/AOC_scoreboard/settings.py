@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from .django_secrets import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,14 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6t-sq8h2kj&oeqzmh7nt-w4!nwwx&tyj&^%$o9xdz&w@m(ol20'
+SECRET_KEY = DEV_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
     "gromer.pythonanywhere.com",
-    "127.0.0.1"
+    "127.0.0.1",
+    "localhost",
+    "0.0.0.0",
+    "10.1.180.225"
 ]
 
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'scoreboard.apps.ScoreboardConfig',
     'webpage.apps.WebpageConfig',
 ]
 
