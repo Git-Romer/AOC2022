@@ -8,6 +8,15 @@ html {
     font-family: "Josefine Sans";
 }
 
-h1 {
-    color: brown;
+footer {
+    font-family: "Josefine Sans";
+    font-size: 0.8em;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+}
+footer a {
+    margin: auto;
+    text-decoration: underline;
+    color: #cdcdcd;
 }
