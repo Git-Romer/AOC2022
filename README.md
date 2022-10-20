@@ -44,7 +44,7 @@ The repository includes 2 files which have to be executed for initialization by 
 When executing this file, the user is asked for the names of the persons to participate. Several persons can be entered at the same time.  
 Example:
 
-```python
+```text
 $ python init_repo.py
 Please enter the participating persons comma separated: user1, user2, user3
 ```
@@ -57,7 +57,7 @@ Afterwards, the user is asked for the session cookie. This is necessary for djan
 If you need help retrieving the session cookie you can jump to the [FAQ section](#How-to-retrieve-the-session-cookie) explaining the process.  
 Example:
 
-```python
+```text
 $ python init_django.py
 Please enter the URL to your Advent of Code Leaderboard: https://adventofcode.com/****/leaderboard/private/view/*******
 Please enter the session cookie to your Advent of Code Leaderboard: 53616c74658e*****************************************************************************************************49ad7acf102791d
