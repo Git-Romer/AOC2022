@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bongostyle.css' %}" />
+{% endblock %} {% block content %}
 <div class="container">
     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 785.5 465.8">
         <g id="bongo-cat">
