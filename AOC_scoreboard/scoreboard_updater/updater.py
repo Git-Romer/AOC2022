@@ -8,5 +8,5 @@ def start():
         print(f"Server launched on {socket.gethostbyname(socket.gethostname())}\nReocurring scoreboard update will not be executed!")
     else:
         scheduler = BackgroundScheduler()
-        scheduler.add_job(scoreboard_api.main, 'interval', minutes=1)
+        scheduler.add_job(scoreboard_api.main, 'interval', minutes=30)
         scheduler.start()
