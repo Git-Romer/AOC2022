@@ -1,22 +1,22 @@
 @font-face {
-    font-family: "Josefine Sans";
-    src: url("../font/Josefin_Sans/JosefinSans-VariableFont_wght.ttf") format("truetype");
+  font-family: "Josefine Sans";
+  src: url("../font/Josefin_Sans/JosefinSans-VariableFont_wght.ttf") format("truetype");
 }
 
 body,
 html {
-    font-family: "Josefine Sans";
+  font-family: "Josefine Sans";
 }
 
 footer {
-    font-family: "Josefine Sans";
-    font-size: 0.8em;
-    position: fixed;
-    bottom: 0;
-    right: 20px;
+  font-family: "Josefine Sans";
+  font-size: 0.8em;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
 }
 footer a {
-    margin: auto;
-    text-decoration: underline;
-    color: #cdcdcd;
+  margin: auto;
+  text-decoration: underline;
+  color: #cdcdcd;
 }

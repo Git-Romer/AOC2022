@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% load static %} {% block title %}
-        <title>AOC Scoreboard</title>
-        {% endblock %} {% block meta %}
-        <!-- Icons -->
-        <link rel="shortcut icon" href="{% static 'images/logos/favicon.png' %}" />
-        <link rel="icon" type="image/png" href="{% static 'images/logos/favicon.png' %}" sizes="32x32" />
-        <link rel="icon" type="image/png" href="{% static 'images/logos/favicon.png' %}" sizes="96x96" />
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/logos/apple-touch-icon.png' %}" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="{% static 'images/logos/mstile-144x144.png' %}" />
-        {% endblock %} {% block css %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-        {% endblock %} {% block extra_css %} {% endblock %} {% block js %}
-        <script>
-            // Detect wether device is a touch device -> Change navbar behaviour if True
-            function isTouchDevice() {
-                return window.ontouchstart !== undefined;
-            }
-            if (isTouchDevice()) {
-                document
-                    .getElementsByTagName("head")[0]
-                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar_touch.css' %}" />;`);
-            } else {
-                document
-                    .getElementsByTagName("head")[0]
-                    .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />;`);
-            }
-        </script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-        {% if request.get_full_path == '/bongocat' %}
-        <script src="{% static 'gsap/gsap-public/minified/gsap.min.js' %}"></script>
-        {% endif %} {% endblock %}
-    </head>
-    <body>
-        <div id="menu">
-            <div class="hamburger" onclick="myFunction()">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <div class="menu-inner">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#">Scoreboard</a></li>
-                    <li><a href="#">Stats</a></li>
-                    <li><a href="https://github.com/Git-Romer/Advent-of-Code" target="_blank">GitHub</a></li>
-                    <li><a href="{% url 'bongocat' %}">BongoCat</a></li>
-                </ul>
-            </div>
+  <head>
+    {% load static %} {% block title %}
+    <title>AOC Scoreboard</title>
+    {% endblock %} {% block meta %}
+    <!-- Icons -->
+    <link rel="shortcut icon" href="{% static 'images/logos/favicon.png' %}" />
+    <link rel="icon" type="image/png" href="{% static 'images/logos/favicon.png' %}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{% static 'images/logos/favicon.png' %}" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/logos/apple-touch-icon.png' %}" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="{% static 'images/logos/mstile-144x144.png' %}" />
+    {% endblock %} {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    {% endblock %} {% block extra_css %} {% endblock %} {% block js %}
+    <script>
+      // Detect wether device is a touch device -> Change navbar behaviour if True
+      function isTouchDevice() {
+        return window.ontouchstart !== undefined;
+      }
+      if (isTouchDevice()) {
+        document
+          .getElementsByTagName("head")[0]
+          .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar_touch.css' %}" />;`);
+      } else {
+        document
+          .getElementsByTagName("head")[0]
+          .insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />;`);
+      }
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    {% if request.get_full_path == '/bongocat' %}
+    <script src="{% static 'gsap/gsap-public/minified/gsap.min.js' %}"></script>
+    {% endif %} {% endblock %}
+  </head>
+  <body>
+    <div id="menu">
+      <div class="hamburger" onclick="myFunction()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="menu-inner">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Scoreboard</a></li>
+          <li><a href="#">Stats</a></li>
+          <li><a href="https://github.com/Git-Romer/Advent-of-Code" target="_blank">GitHub</a></li>
+          <li><a href="{% url 'bongocat' %}">BongoCat</a></li>
+        </ul>
+      </div>
 
-            <svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z" />
-            </svg>
-        </div>
-        <script>
-            function myFunction() {
-                document.getElementById("menu").classList.toggle("expanded");
-            }
-            if (isTouchDevice()) {
-                document.getElementById("blob").style.visibility = "hidden";
-            } else {
-                var script = document.createElement("script");
-                script.src = "{% static 'js/navbar.js' %}";
-                var ref = document.querySelector("script");
-                ref.parentNode.insertBefore(script, ref);
-            }
-        </script>
-        {% block content %}{% endblock content %} {% if request.get_full_path == '/bongocat' %}
-        <script type="text/javascript" src="{% static 'js/bongocat.js' %}"></script>
-        {% endif %}
-        <footer>
-            <p>
-                Made with <span style="color: #e25555">&hearts;</span> by
-                <a href="https://www.linkedin.com/in/gilles-romer/" target="_blank">Gilles Romer</a> and
-                <a href="#" target="_blank">Markus Svahn</a>
-            </p>
-        </footer>
-    </body>
+      <svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z" />
+      </svg>
+    </div>
+    <script>
+      function myFunction() {
+        document.getElementById("menu").classList.toggle("expanded");
+      }
+      if (isTouchDevice()) {
+        document.getElementById("blob").style.visibility = "hidden";
+      } else {
+        var script = document.createElement("script");
+        script.src = "{% static 'js/navbar.js' %}";
+        var ref = document.querySelector("script");
+        ref.parentNode.insertBefore(script, ref);
+      }
+    </script>
+    {% block content %}{% endblock content %} {% if request.get_full_path == '/bongocat' %}
+    <script type="text/javascript" src="{% static 'js/bongocat.js' %}"></script>
+    {% endif %}
+    <footer>
+      <p>
+        Made with <span style="color: #e25555">&hearts;</span> by
+        <a href="https://www.linkedin.com/in/gilles-romer/" target="_blank">Gilles Romer</a> and
+        <a href="#" target="_blank">Markus Svahn</a>
+      </p>
+    </footer>
+  </body>
 </html>
