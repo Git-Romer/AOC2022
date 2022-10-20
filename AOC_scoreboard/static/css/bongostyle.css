@@ -19,6 +19,7 @@ body {
 .container {
     width: 80vw;
     height: 80vh;
+    padding-bottom: 10px;
 }
 .container svg {
     height: 100%;
