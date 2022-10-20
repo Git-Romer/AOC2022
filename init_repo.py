@@ -4,7 +4,7 @@ import pathlib
 
 def create_participant_dirs(users):
     count = 0
-    warning = input(f"WARNING: This will initialize the repository in the following directory:\n\n{pathlib.Path().resolve()}\n\nAre you sure you want to continue? [(y)es|(n)o]: ")
+    warning = input(f"WARNING: This will initialize the repository and create multiple folders in the following directory:\n\n{pathlib.Path().resolve()}\n\nPlease make sure this is the correct repository path!\nAre you sure you want to continue? [(y)es|(n)o]: ")
     if warning.lower() == "y" or warning.lower() == "yes":
         for user in users: # Creating directories for specific users
             try:
