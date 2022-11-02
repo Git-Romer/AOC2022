@@ -6,10 +6,8 @@ def main():
     from scoreboard.models import jsoncrawler
 
     def get_scoreboard_json():
-        SCOREBOARD_URL = 'https://adventofcode.com/2021/leaderboard/private/view/2203592.json'
-
         headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko/20100101 Firefox/104.0'}
-        return requests.get(SCOREBOARD_URL, headers=headers, cookies=api_secrets.SESSION_COOKIE).json()
+        return requests.get(api_secrets.SCOREBOARD_URL, headers=headers, cookies=api_secrets.SESSION_COOKIE).json()
 
     def update():
 

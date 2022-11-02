@@ -131,3 +131,5 @@ dmypy.json
 # Tokens and keys
 api_secrets.py
 django_secrets.py
+
+.vscode/
