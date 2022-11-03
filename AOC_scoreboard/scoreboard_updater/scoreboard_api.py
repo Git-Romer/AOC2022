@@ -20,7 +20,7 @@ def main():
             global_score = response["members"][member]["global_score"]
             local_score = response["members"][member]["local_score"]
             last_star_ts = response["members"][member]["last_star_ts"]
-            completition_day_level = response["members"][member]["completion_day_level"]
+            completion_day_level = response["members"][member]["completion_day_level"]
             event = response["event"]
 
             res = jsoncrawler(
@@ -30,7 +30,7 @@ def main():
                 global_score=global_score,
                 local_score=local_score,
                 last_star_ts=last_star_ts,
-                completition_day_level=completition_day_level,
+                completion_day_level=completion_day_level,
                 event=event
             )
             res.save()

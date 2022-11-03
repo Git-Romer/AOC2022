@@ -9,7 +9,7 @@ class jsoncrawler(models.Model):
     global_score = models.IntegerField()
     local_score = models.IntegerField()
     last_star_ts = models.TextField()
-    completition_day_level = models.JSONField(blank=True)
+    completion_day_level = models.JSONField(blank=True)
     event = models.TextField()
 
     class Meta:
