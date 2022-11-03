@@ -18,9 +18,6 @@ def index(request):
     context = {'calendar': str(calendar)}
     return render(request, 'index.html', context)
 
-def bongocat(request):
-    return render(request, 'bongo_cat.html', {})
-
 def scoreboard(request):
     data = jsoncrawler.objects.all().order_by('-stars')
     podium = {}
@@ -50,3 +47,5 @@ def scoreboard(request):
         'daycounter': daycounter,
     }
     return render(request, 'scoreboard.html', context)
+def bongocat(request):
+    return render(request, 'bongo_cat.html', {})
