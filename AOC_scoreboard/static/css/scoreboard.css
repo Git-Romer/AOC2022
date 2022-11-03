@@ -113,15 +113,15 @@
   opacity: 1;
 }
 .scoreboard__podiums .scoreboard__podium-base--first {
-  background: linear-gradient(to bottom, #bd4f6c 0%, #9e3b55 100%);
+  background: linear-gradient(to bottom, #f0cf65 0%, #ebc137 100%);
+  background-color: #f0cf65;
 }
 .scoreboard__podiums .scoreboard__podium-base--second {
-  background-color: #f0cf65;
-  background: linear-gradient(to bottom, #f0cf65 0%, #ebc137 100%);
-}
-.scoreboard__podiums .scoreboard__podium-base--third {
   background-color: #5e9ead;
   background: linear-gradient(to bottom, #5e9ead 0%, #49828f 100%);
+}
+.scoreboard__podiums .scoreboard__podium-base--third {
+  background: linear-gradient(to bottom, #bd4f6c 0%, #9e3b55 100%);
 }
 .scoreboard__podiums .scoreboard__podium-number {
   text-align: center;
