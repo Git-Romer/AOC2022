@@ -16,7 +16,7 @@
         </div>
         <div class="scoreboard__podium-number">
           {{ snd_best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ snd_best_user.stars | default:"&nbsp;" }}</span></small>
+          <small><span class="js-podium-data">{{ snd_best_user.stars | default:"&nbsp;" }} &#11088;</span></small>
         </div>
       </div>
       <div class="scoreboard__podium js-podium" data-height="250px">
@@ -26,7 +26,7 @@
         </div>
         <div class="scoreboard__podium-number">
           {{ best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ best_user.stars | default:"&nbsp;" }}</span></small>
+          <small><span class="js-podium-data">{{ best_user.stars | default:"&nbsp;" }} &#11088;</span></small>
         </div>
       </div>
       <div class="scoreboard__podium js-podium" data-height="150px">
@@ -35,7 +35,7 @@
         </div>
         <div class="scoreboard__podium-number">
           {{ thrd_best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ thrd_best_user.stars | default:"&nbsp;" }}</span></small>
+          <small><span class="js-podium-data">{{ thrd_best_user.stars | default:"&nbsp;" }} &#11088;</span></small>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
         <li class="scoreboard__item" data-count={{ user.stars }}>
           <div class="scoreboard__title">{{ user.name }}</div>
           <div class="scoreboard__numbers">
-            <span class="js-number">{{ user.stars }} / 50 Stars</span>
+            <span class="js-number">{{ user.stars }} / 50 &#11088;</span>
           </div>
           <div class="scoreboard__bar js-bar">
             <div class="scoreboard__bar-bar"></div>
