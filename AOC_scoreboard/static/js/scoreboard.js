@@ -15,7 +15,7 @@ $(document).ready(function () {
 
   // randomizeData();
   startBars();
-  sortItems();
+  alignItems();
 });
 
 function randomizeData() {
@@ -42,9 +42,7 @@ function startBars() {
   });
 }
 
-function sortItems() {
-  tinysort.defaults.order = "desc";
-
+function alignItems() {
   var ul = document.getElementById("scoreboard__items"),
     lis = ul.querySelectorAll("li"),
     liHeight = lis[0].offsetHeight;
@@ -54,12 +52,4 @@ function sortItems() {
     li.style.position = "absolute";
     li.style.top = i * liHeight + "px";
   }
-  tinysort("ol#scoreboard__items>li", "span.js-number").forEach(function (elm, i) {
-    setTimeout(
-      function (elm, i) {
-        elm.style.top = i * liHeight + "px";
-      }.bind(null, elm, i),
-      40
-    );
-  });
 }
