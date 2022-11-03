@@ -10,6 +10,7 @@
   padding: 3rem 50px;
   flex-direction: column;
   color: #fff;
+  overflow: hidden;
 }
 .scoreboard__item {
   display: flex;
