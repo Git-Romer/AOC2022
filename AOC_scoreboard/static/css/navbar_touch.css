@@ -1,14 +1,3 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: #26394e;
-  overflow: auto;
-  min-height: -webkit-fill-available;
-  height: 100%;
-}
-
 #menu {
   height: 100%;
   position: absolute;
