@@ -14,8 +14,8 @@
           <div class="scoreboard__podium-rank">2</div>
         </div>
         <div class="scoreboard__podium-number">
-          {{ best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ best_user.stars | default:"&nbsp;" }}</span></small>
+          {{ snd_best_user.name | default:"&nbsp;" }}
+          <small><span class="js-podium-data">{{ snd_best_user.stars | default:"&nbsp;" }}</span></small>
         </div>
       </div>
       <div class="scoreboard__podium js-podium" data-height="250px">
@@ -24,8 +24,8 @@
   
         </div>
         <div class="scoreboard__podium-number">
-          {{ snd_best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ snd_best_user.stars | default:"&nbsp;" }}</span></small>
+          {{ best_user.name | default:"&nbsp;" }}
+          <small><span class="js-podium-data">{{ best_user.stars | default:"&nbsp;" }}</span></small>
         </div>
       </div>
       <div class="scoreboard__podium js-podium" data-height="150px">
