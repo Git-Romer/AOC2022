@@ -1,16 +1,17 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
 class jsoncrawler(models.Model):
     member_id = models.IntegerField(unique=True, primary_key=True)
     name = models.TextField()
-    stars = models.IntegerField()
-    global_score = models.IntegerField()
-    local_score = models.IntegerField()
-    last_star_ts = models.TextField()
-    completion_day_level = models.JSONField(blank=True)
-    event = models.TextField()
+    stars = models.PositiveIntegerField(default=0)
+    global_score = models.PositiveIntegerField(default=0)
+    local_score = models.PositiveIntegerField(default=0)
+    last_star_ts = models.TextField(null=True, blank=True)
+    completion_day_level = models.JSONField(null=True, blank=True)
+    event = models.PositiveIntegerField(default=date.today().year)
 
     class Meta:
         verbose_name_plural = "aoc_scoreboard_content"
