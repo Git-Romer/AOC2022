@@ -18,5 +18,6 @@ from webpage import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('scoreboard', views.scoreboard, name='scoreboard'),
     path('bongocat', views.bongocat, name='bongocat'),
 ]
