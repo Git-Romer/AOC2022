@@ -21,17 +21,7 @@ def index(request):
 def bongocat(request):
     return render(request, 'bongo_cat.html', {})
 def scoreboard(request):
-    data = jsoncrawler.objects.all().order_by('stars')
-    if len(data.order_by('stars')) > 0:
-        best_user = data.order_by('stars')[0]
-    else:
-        best_user = ""
-    if len(data.order_by('stars')) > 1:
-        snd_best_user = data.order_by('stars')[1]
-    else:
-        snd_best_user = ""
-    if len(data.order_by('stars')) > 2:
-        thrd_best_user = data.order_by('stars')[2]
+    data = jsoncrawler.objects.all().order_by('-stars')
     else:
         thrd_best_user = ""
     # users = jsoncrawler.objects.values_list('name', flat=True)
