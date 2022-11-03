@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import requests
+import requests, datetime
 from bs4 import BeautifulSoup
 # Importing Table
 from scoreboard.models import jsoncrawler
@@ -20,6 +20,7 @@ def index(request):
 
 def bongocat(request):
     return render(request, 'bongo_cat.html', {})
+
 def scoreboard(request):
     data = jsoncrawler.objects.all().order_by('-stars')
     podium = {}
@@ -31,10 +32,21 @@ def scoreboard(request):
                 podium[podiums] = ""
         else:
             podium[podiums] = ""
+
+    startdate = datetime.date(datetime.datetime.now().year, 12, 1)
+    enddate = datetime.date(datetime.datetime.now().year, 12, 25)
+    if datetime.datetime.now().date() < startdate:
+        daycounter = "Challenge has not started yet"
+    elif datetime.datetime.now().date() > enddate:
+        daycounter = "Challenge has ended"
+    else:
+        daycounter = "Day " + str(datetime.datetime.now().day) + " of 25"
+
     context = {
         'data': data,
         'best_user': podium[0],
         'snd_best_user': podium[1],
         'thrd_best_user': podium[2],
+        'daycounter': daycounter,
     }
     return render(request, 'scoreboard.html', context)
