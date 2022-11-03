@@ -2,10 +2,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/scoreboard.css' %}" />
 {% endblock %} {% block extra_js %}
 <script type="text/javascript" src="{% static 'js/scoreboard.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/tinysort.min.js' %}"></script>  
 {% endblock %} {% block content %}
 <div class="header">
     <h1>Scoreboard</h1>
+    <p>Players can get 2 stars per day</p>
+    <p>{{ daycounter }}</p>
 </div>
 <div class="scoreboard">
     <div class="scoreboard__podiums">
@@ -39,11 +40,11 @@
       </div>
     </div>
     <ol class="scoreboard__items" id="scoreboard__items">
-      {% for user in data %}
+      {% for user in data|dictsort:"name"|dictsortreversed:"stars" %}
         <li class="scoreboard__item" data-count={{ user.stars }}>
           <div class="scoreboard__title">{{ user.name }}</div>
           <div class="scoreboard__numbers">
-            <span class="js-number">{{ user.stars }}</span>
+            <span class="js-number">{{ user.stars }} / 50 Stars</span>
           </div>
           <div class="scoreboard__bar js-bar">
             <div class="scoreboard__bar-bar"></div>
