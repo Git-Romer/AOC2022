@@ -47,5 +47,10 @@ def scoreboard(request):
         'daycounter': daycounter,
     }
     return render(request, 'scoreboard.html', context)
+
+def stats(request):
+    return render(request, 'stats.html', {})
+
+
 def bongocat(request):
     return render(request, 'bongo_cat.html', {})
