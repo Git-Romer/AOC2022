@@ -16,7 +16,7 @@
         </div>
         <div class="scoreboard__podium-number">
           {{ snd_best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ snd_best_user.stars | default:"&nbsp;" }} &#11088;</span></small>
+        <small><span class="js-podium-data">{{ snd_best_user.stars | default:"&nbsp;" }}{% if snd_best_user.stars > 0%} &#11088;{% endif %}</span></small>
         </div>
       </div>
       <div class="scoreboard__podium js-podium" data-height="250px">
@@ -26,7 +26,7 @@
         </div>
         <div class="scoreboard__podium-number">
           {{ best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ best_user.stars | default:"&nbsp;" }} &#11088;</span></small>
+        <small><span class="js-podium-data">{{ best_user.stars | default:"&nbsp;" }}{% if best_user.stars > 0%} &#11088;{% endif %}</span></small>
         </div>
       </div>
       <div class="scoreboard__podium js-podium" data-height="150px">
@@ -35,7 +35,7 @@
         </div>
         <div class="scoreboard__podium-number">
           {{ thrd_best_user.name | default:"&nbsp;" }}
-          <small><span class="js-podium-data">{{ thrd_best_user.stars | default:"&nbsp;" }} &#11088;</span></small>
+        <small><span class="js-podium-data">{{ thrd_best_user.stars | default:"&nbsp;" }}{% if thrd_best_user.stars > 0%} &#11088;{% endif %}</span></small>
         </div>
       </div>
     </div>
