@@ -84,6 +84,20 @@ def stats(request):
     dataset = ""
     colorpalette = colorize(len(data))
     for i, user in enumerate(data.order_by(Lower('name'))):
+        user_starcount = []
+        for participated_days in range(1, 26):
+            if str(participated_days) in user.completion_day_level:
+                if len(user_starcount) >= 1:
+                    user_starcount.append(user_starcount[participated_days - 2] + len(user.completion_day_level[f"{participated_days}"]))
+                else:
+                    user_starcount.append(len(user.completion_day_level[f"{participated_days}"]))
+            else:
+                if len(user_starcount) >= 1:
+                    user_starcount.append(user_starcount[participated_days - 2])
+                else:
+                    user_starcount.append("null")
+        user_starcount.insert(0, "0")
+
         dataset = dataset + \
         f"""
         {{
