@@ -104,7 +104,7 @@ def stats(request):
             label: "{user.name}",
             backgroundColor: 'rgb({', '.join(map(str, colorpalette[i]))})',
             borderColor: 'rgb({', '.join(map(str, colorpalette[i]))})',
-            data: {randomdata()},
+            data: {user_starcount},
             tension: 0.2,
         }},"""
 

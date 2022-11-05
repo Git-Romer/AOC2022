@@ -11,9 +11,7 @@
 </div>
 <script>
   const data = {
-    {% comment %} labels: {{ max_day|safe }},
-    datasets: [{{ dataset|safe }}], {% endcomment %}
-    labels: {{ randomday|safe }},
+    labels: {{ max_day|safe }},
     datasets: [{{ dataset|safe }}],
   };
   const config = {
@@ -41,8 +39,7 @@
             align: "center",
           },
           min: 0,
-          {% comment %} max: {{ max_stars }}, {% endcomment %}
-          max: 50,
+          max: {{ max_stars }},
           ticks: {
             stepSize: 2,
           },
