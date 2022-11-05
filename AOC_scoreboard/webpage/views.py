@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models.functions import Lower
+from django.db.models import Count
 import requests, datetime, numpy as np, seaborn as sns
 from bs4 import BeautifulSoup
 # Importing Table
@@ -21,6 +22,12 @@ def index(request):
 
 def scoreboard(request):
     data = jsoncrawler.objects.all()
+
+    dups = jsoncrawler.objects.values('name').annotate(name_count=Count('name')).exclude(name_count=1)
+    records = jsoncrawler.objects.filter(name__in=[item['name'] for item in dups])
+    for item in records:
+        data.filter(member_id=item.member_id).update(name=item.name + "(" + str(item.member_id) + ")")
+
     podium = {}
     for podiums in range(3):
         if len(data) >= podiums:
