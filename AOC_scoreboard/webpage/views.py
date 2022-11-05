@@ -18,7 +18,7 @@ def index(request):
         a['href'] = 'https://adventofcode.com' + a['href']
         a['target'] = '_blank'
     context = {'calendar': str(calendar)}
-    return render(request, 'index.html', context)
+    return render(request, 'index_under_construction.html', context)
 
 def scoreboard(request):
     data = jsoncrawler.objects.all()
