@@ -29,10 +29,10 @@ def scoreboard(request):
         data.filter(member_id=item.member_id).update(name=item.name + "(" + str(item.member_id) + ")")
 
     podium = {}
-    for podiums in range(3):
+    for podiums in range(1,4):
         if len(data) >= podiums:
-            if not data.order_by('-stars', Lower('name')).values('stars')[podiums].get('stars') == 0:
-                podium[podiums] = data.order_by('-stars', Lower('name'))[podiums]
+            if not data.order_by('-stars', Lower('name')).values('stars')[podiums - 1].get('stars') == 0:
+                podium[podiums] = data.order_by('-stars', Lower('name'))[podiums - 1]
             else:
                 podium[podiums] = ""
         else:
@@ -49,9 +49,9 @@ def scoreboard(request):
 
     context = {
         'data': data,
-        'best_user': podium[0],
-        'snd_best_user': podium[1],
-        'thrd_best_user': podium[2],
+        'best_user': podium[1],
+        'snd_best_user': podium[2],
+        'thrd_best_user': podium[3],
         'daycounter': daycounter,
     }
     return render(request, 'scoreboard.html', context)
