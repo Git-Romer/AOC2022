@@ -28,7 +28,6 @@ function randomizeData() {
 
 function startBars() {
   $(".js-bar").each(function () {
-    console.log("running");
     // calculate %.
     var t = $(this);
     setTimeout(function () {
