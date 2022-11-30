@@ -28,7 +28,7 @@ SECRET_KEY = r"3vyce!bh9a(253i)hbq@f%7u$n%%-qk%rv0fqa83d=8qyj3!dl"
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "gromer.pythonanywhere.com",
+    ".pythonanywhere.com",
     "127.0.0.1",
     "localhost",
     "0.0.0.0",
