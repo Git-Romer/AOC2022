@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/stats.css' %}" />
+{% endblock %} {% block extra_js %}
+<script type="application/javascript" src="{% static 'js/chart.js' %}"></script>
+{% endblock %} {% block content %}
+<div class="header">
+  <h1>Statistics</h1>
+</div>
+<div class="stats_graph">
+  <canvas id="myChart"></canvas>
+</div>
+<script>
+  const data = {
+    labels: {{ max_day|safe }},
+    datasets: [{{ dataset|safe }}],
+  };
+  const config = {
+    type: "line",
+    data: data,
+    options: {
+      scales: {
+        x: {
+          title : {
+            display: true,
+            text: "CHALLENGE DAYS",
+            align: "center",
+          },
+          min: 0,
+          max: 25,
+          ticks: {
+            stepSize: 1,
+          },
+          beginAtZero: true,
+        },
+        y: {
+          title : {
+            display: true,
+            text: "STARS",
+            align: "center",
+          },
+          min: 0,
+          max: {{ max_stars }},
+          ticks: {
+            stepSize: 2,
+          },
+          beginAtZero: true,
+        },
+      },
+    },
+  };
+</script>
+<script>
+  const myChart = new Chart(document.getElementById("myChart"), config);
+</script>
+
+{% endblock content %}

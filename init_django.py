@@ -37,18 +37,18 @@ if __name__ == "__main__":
         if os.path.isfile(r'./AOC_scoreboard/AOC_scoreboard/django_secrets.py'):
             warning = input("Django's secret keys have already been generated.\nAre you sure you want to continue and overwrite the file? [(y)es|(n)o]: ")
             if warning.lower() == "y" or warning.lower() == "yes":
-                with open('./AOC_scoreboard/AOC_scoreboard/jango_secrets.py', 'w') as f:
+                with open('./AOC_scoreboard/AOC_scoreboard/django_secrets.py', 'w') as f:
                     f.write(f'PROD_KEY = r"{Prod_key}"\nDEV_KEY = r"{Dev_key}"')
                     f.close()
             else:
-                print("Aborded initialization.")
+                print("Aborted initialization.")
         else:
-                with open('./AOC_scoreboard/AOC_scoreboard/jango_secrets.py', 'w') as f:
+                with open('./AOC_scoreboard/AOC_scoreboard/django_secrets.py', 'w') as f:
                     f.write(f'PROD_KEY = r"{Prod_key}"\nDEV_KEY = r"{Dev_key}"')
                     f.close()
 
 
-        with open('./AOC_scoreboard/scoreboard_updater/pi_secrets.py', 'w') as f:
+        with open('./AOC_scoreboard/scoreboard_updater/api_secrets.py', 'w') as f:
             f.write(f'SESSION_COOKIE = {{"session" : r"{aoc_scoreboard_cookie}"}}\nSCOREBOARD_URL = r"{aoc_scoreboard_url}"')
             f.close()
     except FileNotFoundError:
