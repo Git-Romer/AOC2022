@@ -6,4 +6,13 @@ with open("puzzle_input.txt") as file:
 elves = []
 for entry in puzzle:
     elves.append(sum(int(x) for x in entry.split("\n")))
-print(max(elves))
+
+
+total = 0
+for i in range(3):
+    biggest = max(elves)
+    total += biggest
+    for j, elf in enumerate(elves):
+        if biggest == elf:
+           elves.pop(j) 
+print(total)
