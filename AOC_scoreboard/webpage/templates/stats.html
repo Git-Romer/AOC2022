@@ -8,53 +8,53 @@
     <p>Scoreboard updates every day at 20:15 UTC+1</p>
 </div>
 <div class="stats_graph">
-  <canvas id="myChart"></canvas>
+    <canvas id="myChart"></canvas>
 </div>
 <script>
-  const data = {
-    {% comment %} labels: {{ max_day|safe }},
-    datasets: [{{ dataset|safe }}], {% endcomment %}
-    labels: {{ randomday|safe }},
-    datasets: [{{ dataset|safe }}],
-  };
-  const config = {
-    type: "line",
-    data: data,
-    options: {
-      scales: {
-        x: {
-          title : {
-            display: true,
-            text: "CHALLENGE DAYS",
-            align: "center",
-          },
-          min: 0,
-          max: 25,
-          ticks: {
-            stepSize: 1,
-          },
-          beginAtZero: true,
+    const data = {
+        {% comment %} labels: {{ max_day|safe }},
+        datasets: [{{ dataset|safe }}], {% endcomment %}
+        labels: {{ randomday|safe }},
+        datasets: [{{ dataset|safe }}],
+    };
+    const config = {
+        type: "line",
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    title : {
+                        display: true,
+                        text: "CHALLENGE DAYS",
+                        align: "center",
+                    },
+                    min: 0,
+                    max: 25,
+                    ticks: {
+                        stepSize: 1,
+                    },
+                    beginAtZero: true,
+                },
+                y: {
+                    title : {
+                        display: true,
+                        text: "STARS",
+                        align: "center",
+                    },
+                    min: 0,
+                    {% comment %} max: {{ max_stars }}, {% endcomment %}
+                    max: 50,
+                    ticks: {
+                        stepSize: 2,
+                    },
+                    beginAtZero: true,
+                },
+            },
         },
-        y: {
-          title : {
-            display: true,
-            text: "STARS",
-            align: "center",
-          },
-          min: 0,
-          {% comment %} max: {{ max_stars }}, {% endcomment %}
-          max: 50,
-          ticks: {
-            stepSize: 2,
-          },
-          beginAtZero: true,
-        },
-      },
-    },
-  };
+    };
 </script>
 <script>
-  const myChart = new Chart(document.getElementById("myChart"), config);
+    const myChart = new Chart(document.getElementById("myChart"), config);
 </script>
 
 {% endblock content %}
