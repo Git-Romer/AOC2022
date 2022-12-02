@@ -10,9 +10,5 @@ for entry in puzzle:
 
 total = 0
 for i in range(3):
-    biggest = max(elves)
-    total += biggest
-    for j, elf in enumerate(elves):
-        if biggest == elf:
-           elves.pop(j) 
+    total += elves.pop(elves.index(max(elves))) 
 print(total)
