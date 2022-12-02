@@ -51,6 +51,45 @@ def calculate_score_strat1(dataset):
                 score += loss + scissors
     return score
 
+def calculate_score_strat2(dataset):
+    score = 0
+    for i in range(len(dataset)):
+        # Need to lose
+        if dataset[i][1] == "X":
+            # Lose against rock
+            if dataset[i][0] == "A":
+                score += loss + scissors
+            # Lose against paper
+            if dataset[i][0] == "B":
+                score += loss + rock
+            # Lose against scissors
+            if dataset[i][0] == "C":
+                score += loss + paper
+        # Need to draw
+        elif dataset[i][1] == "Y":
+            # Draw against rock
+            if dataset[i][0] == "A":
+                score += draw + rock
+            # Draw against paper
+            if dataset[i][0] == "B":
+                score += draw + paper
+            # Draw against scissors
+            if dataset[i][0] == "C":
+                score += draw + scissors
+        # Need to win
+        else:
+            # Win against rock
+            if dataset[i][0] == "A":
+                score += win + paper
+            # Win against paper
+            if dataset[i][0] == "B":
+                score += win + scissors
+            # Win against scissors
+            if dataset[i][0] == "C":
+                score += win + rock
+    return score
+
+
 # Defining variables
 loss = 0
 draw = 3
@@ -67,5 +106,8 @@ if __name__ == "__main__":
     rps_list = dataset_to_list(dataset)
     # Calculate score for strategy 1
     score1 = calculate_score_strat1(rps_list)
+    # Calculate score for strategy 2
+    score2 = calculate_score_strat2(rps_list)
     # Print score
     print(f"The score for the first strategy is {score1}")
+    print(f"The score for the second strategy is {score2}")
