@@ -74,12 +74,17 @@ def stats(request):
 
     data = jsoncrawler.objects.all()
     
-    if datetime.datetime.now().date() >= datetime.date(datetime.datetime.now().year, 12, 1) and datetime.datetime.now().date() <= datetime.date(datetime.datetime.now().year, 12, 25):
+    if datetime.datetime.now().date() >= datetime.date(datetime.datetime.now().year, 12, 1):
         max_day = datetime.datetime.now().day
         max_stars = 2 * max_day
-    else:
+        max_day = list(range(max_day + 1))
+    elif datetime.datetime.now().date() <= datetime.date(datetime.datetime.now().year, 12, 25):
         max_day = 0
         max_stars = 0
+    else:
+        max_day = 25
+        max_stars = 50
+        max_day = list(range(max_day + 1))
 
     dataset = ""
     colorpalette = colorize(len(data))
