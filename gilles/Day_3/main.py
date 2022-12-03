@@ -47,6 +47,28 @@ def calculate_sum_of_items(rucksacks):
         sum += rucksacks[rucksack]["chartoint"]
     return sum
 
+# Group the rucksacks in sets of 3
+def group_rucksacks(dataset):
+    groups = {}
+    groupcount = 0
+    for i in range(0, len(dataset), 3):
+        if i % 3 == 0:
+            groups["group_" + str(groupcount)] = {
+                "rucksack_1": dataset[i],
+                "rucksack_2": dataset[i+1],
+                "rucksack_3": dataset[i+2]
+            }
+        groupcount += 1
+    return(groups)
+
+# Find characters that are the same in all 3 rucksacks
+def find_same_items_in_all_rucksacks(groups):
+    for group in groups:
+        for item in groups[group]["rucksack_1"]:
+            if item in groups[group]["rucksack_2"] and item in groups[group]["rucksack_3"]:
+                groups[group]["same_items"] = item
+    return(groups)
+
 # Main
 if __name__ == "__main__":
     # Load data
@@ -59,4 +81,14 @@ if __name__ == "__main__":
     rucksacks = convert_same_items_to_int(rucksacks)
     # Calculate the sum of each item (chartoint)
     sum = calculate_sum_of_items(rucksacks)
-    print(f"The sum of the items is: {sum}")
+    print(f"The sum of the items in the first part is: {sum}")
+
+    # Group the rucksacks in sets of 3
+    groups = group_rucksacks(dataset)
+    # Find characters that are the same in all 3 rucksacks
+    groups = find_same_items_in_all_rucksacks(groups)
+    # Convert same items to int
+    groups = convert_same_items_to_int(groups)
+    # Calculate the sum of each item (chartoint)
+    sum = calculate_sum_of_items(groups)
+    print(f"The sum of the items in the second part is: {sum}")
