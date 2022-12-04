@@ -27,6 +27,11 @@ def check_common_elements(list1, list2):
     if set(list1).issubset(list2) or set(list2).issubset(list1):
         return True
 
+# Check if two lists overlap
+def check_overlap(list1, list2):
+    if set(list1).intersection(list2) or set(list2).intersection(list1):
+        return True
+
 # Main
 if __name__ == '__main__':
     # Load data
@@ -39,4 +44,7 @@ if __name__ == '__main__':
     for i in range(len(pairs)):
         if check_common_elements(pairs["pair" + str(i)]["elf1"], pairs["pair" + str(i)]["elf2"]):
             common_elements += 1
+        if check_overlap(pairs["pair" + str(i)]["elf1"], pairs["pair" + str(i)]["elf2"]):
+            overlapping_elements += 1
     print(f"Number of common elements: {common_elements}")
+    print(f"Number of overlapping elements: {overlapping_elements}")
