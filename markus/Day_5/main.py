@@ -34,7 +34,7 @@ for instruction in instructions:
     for movecount in range(instruction[0]):
         buffer.append(crates[instruction[1] - 1].pop())
     while buffer != []:
-        crates[instruction[2] - 1].append(buffer.pop(0))
+        crates[instruction[2] - 1].append(buffer.pop())
 
 result = []
 for i in range(9):
