@@ -31,6 +31,16 @@ def apply_instruction_CrateMover_9000(data):
         data["stacks"][f"{instruction[1]}"] = data["stacks"][f"{instruction[1]}"][:-instruction[0]]
     return data
 
+# Get apply instruction steps to stacks (CrateMover_9001)
+def apply_instruction_CrateMover_9001(data):
+    for instruction in data["instructions"]:
+        instruction = convert_instructions(instruction)
+        # Append last n values to new stack
+        data["stacks"][f"{instruction[2]}"] += data["stacks"][f"{instruction[1]}"][-instruction[0]:]
+        # Remove last n values from old stack
+        data["stacks"][f"{instruction[1]}"] = data["stacks"][f"{instruction[1]}"][:-instruction[0]]
+    return data
+
 # Get every last value of stacks
 def get_last_values(data):
     last_values = []
@@ -47,3 +57,8 @@ if __name__ == '__main__':
     result_part1 = get_last_values(apply_instruction_CrateMover_9000(deepcopy(raw_data)))
     # Print results
     print(f"Sequence of Part 1: {result_part1} -> {''.join(result_part1)}")
+
+    # Apply instructions (part 2)
+    result_part2 = get_last_values(apply_instruction_CrateMover_9001(deepcopy(raw_data)))
+    # Print results
+    print(f"Sequence of Part 2: {result_part2} -> {''.join(result_part2)}")
