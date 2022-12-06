@@ -31,8 +31,8 @@ def scoreboard(request):
     podium = {}
     for podiums in range(1,4):
         if len(data) >= podiums:
-            if not data.order_by('-stars', Lower('name')).values('stars')[podiums - 1].get('stars') == 0:
-                podium[podiums] = data.order_by('-stars', Lower('name'))[podiums - 1]
+            if not data.order_by('-local_score', Lower('name')).values('stars')[podiums - 1].get('stars') == 0:
+                podium[podiums] = data.order_by('-local_score', Lower('name'))[podiums - 1]
             else:
                 podium[podiums] = ""
         else:
