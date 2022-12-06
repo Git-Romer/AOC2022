@@ -5,7 +5,8 @@
 {% endblock %} {% block content %}
 <div class="header">
   <h1>Scoreboard</h1>
-  <p>Players can get up to two stars per day</p>
+  <p>Players can get up to two stars per day<br>Scoreboard updates every day at 20:15 UTC+1</p>
+  </p>
   <p>{{ daycounter }}</p>
 </div>
 <div class="scoreboard">
@@ -40,7 +41,7 @@
     </div>
   </div>
   <ol class="scoreboard__items" id="scoreboard__items">
-    {% for user in data|dictsort:"name"|dictsortreversed:"stars" %}
+    {% for user in data|dictsort:"name"|dictsortreversed:"local_score" %}
       <li class="scoreboard__item" data-count={{ user.stars }}>
         <div class="scoreboard__title">{{ user.name }}</div>
         <div class="scoreboard__numbers">
