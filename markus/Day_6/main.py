@@ -3,8 +3,8 @@ puzzle = ""
 with open("input.txt") as file:
     puzzle = file.read()
 
-for i in range(3, len(puzzle)):
-    if puzzle[i-3] in (puzzle[i-2], puzzle[i-1], puzzle[i]) or puzzle[i-2] in (puzzle[i-1], puzzle[i]) or puzzle[i-1] == puzzle[i]:
+for i in range(13, len(puzzle)):
+    if 14 > len(set(puzzle[i-13:i+1])):
         continue
     print(i+1)
     break
