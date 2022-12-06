@@ -41,7 +41,7 @@
     </div>
   </div>
   <ol class="scoreboard__items" id="scoreboard__items">
-    {% for user in data|dictsort:"name"|dictsortreversed:"stars" %}
+    {% for user in data|dictsort:"name"|dictsortreversed:"local_score" %}
       <li class="scoreboard__item" data-count={{ user.stars }}>
         <div class="scoreboard__title">{{ user.name }}</div>
         <div class="scoreboard__numbers">
