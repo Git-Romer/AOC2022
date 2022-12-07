@@ -31,8 +31,8 @@ def scoreboard(request):
     podium = {}
     for podiums in range(1,4):
         if len(data) >= podiums:
-            if not data.order_by('-stars', Lower('name')).values('stars')[podiums - 1].get('stars') == 0:
-                podium[podiums] = data.order_by('-stars', Lower('name'))[podiums - 1]
+            if not data.order_by('-local_score', Lower('name')).values('stars')[podiums - 1].get('stars') == 0:
+                podium[podiums] = data.order_by('-local_score', Lower('name'))[podiums - 1]
             else:
                 podium[podiums] = ""
         else:
@@ -72,32 +72,36 @@ def stats(request):
         randday = list(range(np.random.choice(range(2,25))))
         return randday
 
+    def unixtime_to_date(unixtime):
+        return datetime.datetime.fromtimestamp(unixtime).strftime('%d')
+
     data = jsoncrawler.objects.all()
     
-    if datetime.datetime.now().date() >= datetime.date(datetime.datetime.now().year, 12, 1) and datetime.datetime.now().date() <= datetime.date(datetime.datetime.now().year, 12, 25):
+    if datetime.datetime.now().date() >= datetime.date(datetime.datetime.now().year, 12, 1):
         max_day = datetime.datetime.now().day
         max_stars = 2 * max_day
-    else:
+        max_day = list(range(max_day + 1))
+    elif datetime.datetime.now().date() <= datetime.date(datetime.datetime.now().year, 12, 25):
         max_day = 0
         max_stars = 0
+    else:
+        max_day = 25
+        max_stars = 50
+        max_day = list(range(max_day + 1))
 
     dataset = ""
     colorpalette = colorize(len(data))
     for i, user in enumerate(data.order_by(Lower('name'))):
         user_starcount = []
-        for participated_days in range(1, 26):
-            if str(participated_days) in user.completion_day_level:
-                if len(user_starcount) >= 1:
-                    user_starcount.append(user_starcount[participated_days - 2] + len(user.completion_day_level[f"{participated_days}"]))
-                else:
-                    user_starcount.append(len(user.completion_day_level[f"{participated_days}"]))
-            else:
-                if len(user_starcount) >= 1:
-                    user_starcount.append(user_starcount[participated_days - 2])
-                else:
-                    user_starcount.append("null")
-        user_starcount.insert(0, "0")
-
+        for total_days in range(1, 26):
+            count = 0
+            for day in user.completion_day_level:
+                for star_ts in user.completion_day_level[day]:
+                    if int(unixtime_to_date(user.completion_day_level[day][star_ts]['get_star_ts'])) == int(total_days):
+                        count += 1
+            user_starcount.append(count + user_starcount[-1] if user_starcount else count)
+        user_starcount.insert(0, 0)
+        user_starcount.pop()
         dataset = dataset + \
         f"""
         {{

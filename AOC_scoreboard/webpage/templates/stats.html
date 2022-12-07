@@ -4,53 +4,54 @@
 <script type="application/javascript" src="{% static 'js/chart.js' %}"></script>
 {% endblock %} {% block content %}
 <div class="header">
-  <h1>Statistics</h1>
+    <h1>Statistics</h1>
+    <p>Scoreboard updates every day at 20:15 UTC+1</p>
 </div>
 <div class="stats_graph">
-  <canvas id="myChart"></canvas>
+    <canvas id="myChart"></canvas>
 </div>
 <script>
-  const data = {
-    labels: {{ max_day|safe }},
-    datasets: [{{ dataset|safe }}],
-  };
-  const config = {
-    type: "line",
-    data: data,
-    options: {
-      scales: {
-        x: {
-          title : {
-            display: true,
-            text: "CHALLENGE DAYS",
-            align: "center",
+    const data = {
+      labels: {{ max_day|safe }},
+      datasets: [{{ dataset|safe }}],
+    };
+    const config = {
+      type: "line",
+      data: data,
+      options: {
+        scales: {
+          x: {
+            title : {
+              display: true,
+              text: "CHALLENGE DAYS",
+              align: "center",
+            },
+            min: 0,
+            max: 25,
+            ticks: {
+              stepSize: 1,
+            },
+            beginAtZero: true,
           },
-          min: 0,
-          max: 25,
-          ticks: {
-            stepSize: 1,
+          y: {
+            title : {
+              display: true,
+              text: "STARS",
+              align: "center",
+            },
+            min: 0,
+            max: {{ max_stars }},
+            ticks: {
+              stepSize: 2,
+            },
+            beginAtZero: true,
           },
-          beginAtZero: true,
-        },
-        y: {
-          title : {
-            display: true,
-            text: "STARS",
-            align: "center",
-          },
-          min: 0,
-          max: {{ max_stars }},
-          ticks: {
-            stepSize: 2,
-          },
-          beginAtZero: true,
         },
       },
-    },
-  };
+    };
 </script>
 <script>
-  const myChart = new Chart(document.getElementById("myChart"), config);
+    const myChart = new Chart(document.getElementById("myChart"), config);
 </script>
 
 {% endblock content %}
