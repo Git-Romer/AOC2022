@@ -26,7 +26,6 @@ def get_random_secret_key():
 
 if __name__ == "__main__":
     Prod_key = get_random_secret_key()
-    Dev_key = get_random_secret_key()
     aoc_scoreboard_url = input("Please enter the URL to your Advent of Code Leaderboard: ") + ".json"
     while not "adventofcode.com" in aoc_scoreboard_url:
         print("The entered URL to your Advent of Code Leaderboard seems not to be correct. Please try again.")
@@ -38,13 +37,13 @@ if __name__ == "__main__":
             warning = input("Django's secret keys have already been generated.\nAre you sure you want to continue and overwrite the file? [(y)es|(n)o]: ")
             if warning.lower() == "y" or warning.lower() == "yes":
                 with open('./AOC_scoreboard/AOC_scoreboard/django_secrets.py', 'w') as f:
-                    f.write(f'PROD_KEY = r"{Prod_key}"\nDEV_KEY = r"{Dev_key}"')
+                    f.write(f'PROD_KEY = r"{Prod_key}"')
                     f.close()
             else:
                 print("Aborted initialization.")
         else:
                 with open('./AOC_scoreboard/AOC_scoreboard/django_secrets.py', 'w') as f:
-                    f.write(f'PROD_KEY = r"{Prod_key}"\nDEV_KEY = r"{Dev_key}"')
+                    f.write(f'PROD_KEY = r"{Prod_key}"')
                     f.close()
 
 
