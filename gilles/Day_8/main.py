@@ -74,6 +74,64 @@ def check_trees(data):
                             continue
     return count
 
+def get_best_spot(data):
+    # multiply each integer in list one after another
+    def multiplier(calclst):
+        result = calclst[0]
+        for x in calclst[1:]:
+            result *= x
+        return result
+
+    treescore = []
+    for row in data:
+        # skip first row
+        if row == data[0]:
+            continue
+        # skip last row
+        if row == data[-1]:
+            continue
+        # skip first and last character
+        for tree in range(1, len(row) - 1):
+            calclst = []
+            calc = 0
+            # Move up until same height or end of trees
+            for above in range(len(data[:data.index(row)]))[::-1]:
+                if data[above][tree] < row[tree]:
+                    calc += 1
+                else:
+                    calc += 1
+                    break
+            calclst.append(calc)
+            # Move down until same height or end of trees
+            calc = 0
+            for bottom in range(data.index(row) + 1, len(data)):
+                if data[bottom][tree] < row[tree]:
+                    calc += 1
+                else:
+                    calc += 1
+                    break
+            calclst.append(calc)
+            # Move left until same height or end of trees
+            calc = 0
+            for left in range(tree)[::-1]:
+                if row[left] < row[tree]:
+                    calc += 1
+                else:
+                    calc += 1
+                    break
+            calclst.append(calc)
+            # Move right until same height or end of trees
+            calc = 0
+            for right in range(tree + 1, len(row)):
+                if row[right] < row[tree]:
+                    calc += 1
+                else:
+                    calc += 1
+                    break
+            calclst.append(calc)
+            treescore.append(multiplier(calclst))
+    return treescore
+
 # Add outer layer of trees to count
 def add_outer(viscount, data):
     outer = (len(data[0]) - 2) * 2 + len(data) * 2
@@ -89,3 +147,6 @@ if __name__ == '__main__':
     # add outer layer of trees to count
     viscount = add_outer(viscount, data)
     print(f"Number of trees visible from any of the 4 sides including outer layers: {viscount}")
+    # get best spot
+    bestspot = get_best_spot(data)
+    print(f"Best score for a tree: {max(bestspot)}")
